@@ -44,3 +44,39 @@ Feel free to add or modify files as you need! (Would be nice to give me credits 
 - **Unreal Engine**: 5.6.1 or later
 - **Epic Online Services**: Free EOS Developer account
 - **Visual Studio 2022**: For C++ compilation
+
+## Installation
+
+1. Download or clone this repository
+2. Copy the `EasyMatchmaking` folder to your project's `Plugins/` directory:
+```
+   YourProject/
+   └── Plugins/
+       └── EasyMatchmaking/  <--- Put it like that
+```
+3. Right-click your `.uproject` file → **Generate Visual Studio project files**
+4. Open your project in Unreal Engine
+5. When prompted, **compile** the plugin
+6. Restart the editor
+
+## Contributing
+
+Contributions welcome! This is a learning project, so:
+- 🐛 Bug reports appreciated
+- 💡 Feature requests welcome
+- 🔧 Pull requests encouraged
+- 📖 Documentation improvements needed!
+
+### Possible Additions
+
+- [ ] Full documentation with examples
+- [ ] Voice chat integration
+- [ ] Matchmaking rating system
+- [ ] Cross-platform support (Linux, Mac)
+- [ ] Steam integration alongside EOS
+
+---
+
+Made with ❤️ for the Unreal Engine community
+
+*"Because dealing with OnlineSubsystem shouldn't require a PhD"*

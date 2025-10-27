@@ -6,7 +6,7 @@ Easy-to-use multiplayer plugin powered by Epic Online Services (EOS). Handle lob
 
 EasyMatchmaking is a plugin for Unreal Engine that lets you create **lobbies with sessions for dedicated servers!** 
 
-Unlike the official Online Subsystem EOS Plugin, this is **pure C++ with no extra dependencies**, giving you **full control** of your network. You can generate your server `.exe` file, run it on your machine, or send it to a cloud service and it'll host the server for you.
+Unlike the official Online Subsystem EOS Plugin, this is **pure C++ for UE with no extra plugins dependencies**, giving you **full control** of your network. You can generate your server `.exe` file, run it on your machine, or send it to a cloud service and it'll host the server for you.
 
 ## Motivation
 
@@ -54,7 +54,7 @@ Feel free to add or modify files as you need! (Would be nice to give me credits 
    └── Plugins/
        └── EasyMatchmaking/  <--- Put it like that
 ```
-3. Right-click your `.uproject` file → **Generate Visual Studio project files**
+3. Right-click your `.uproject` file -> **Generate Visual Studio project files**
 4. Open your project in Unreal Engine
 5. When prompted, **compile** the plugin
 6. Restart the editor

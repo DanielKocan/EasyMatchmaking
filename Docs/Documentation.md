@@ -22,13 +22,13 @@
 ### Step 1: Add Plugin to Project
 
 **Option A - Download:**
-1. Download the plugin from [github](https://github.com/YourUsername/EasyMatchmaking)
+1. Download the plugin from [github](https://github.com/DanielKocan/EasyMatchmaking)
 2. Extract to `YourProject/Plugins/EasyMatchmaking/`
 
 **Option B - Git Clone:**
 ```bash
 cd YourProject/Plugins
-git clone https://github.com/YourUsername/EasyMatchmaking.git
+git clone https://github.com/DanielKocan/EasyMatchmaking.git
 ```
 
 ### Step 2: Generate Project Files
@@ -47,7 +47,7 @@ git clone https://github.com/YourUsername/EasyMatchmaking.git
 
 The plugin should be **automatically enabled**. To verify:
 
-1. Go to **Edit → Plugins**
+1. Go to **Edit -> Plugins**
 2. Search for "EasyMatchmaking"
 3. Make sure it's checked ✅
 
@@ -76,7 +76,7 @@ After disabling plugins, restart Unreal Engine.
 
 ### Add Your EOS Credentials
 
-1. Go to **Project Settings → Game: Easy Matchmaking**
+1. Go to **Project Settings -> Game: Easy Matchmaking**
 2. Fill in your EOS credentials:
 
 **EOS Credentials:**
@@ -106,13 +106,13 @@ After disabling plugins, restart Unreal Engine.
 4. Create a **Deployment**
 5. Create **Client Credentials** (one for game client, one for dedicated server)
 6. Copy Product ID, Sandbox ID, Deployment ID, Client IDs and Secrets
-7. Paste them in **Project Settings → Game → Easy Matchmaking**
+7. Paste them in **Project Settings -> Game -> Easy Matchmaking**
 
 ### Important: Add Test Users to Sandbox
 
 **By default, EOS Sandboxes are private!** You must add testers manually:
 
-1. In Epic Developer Portal → Your Product → Sandbox Settings
+1. In Epic Developer Portal -> Your Product -> Sandbox Settings
 2. Go to **Members** or **Permissions** tab
 3. **Add Epic Account IDs** of all people who will test your game
 4. Each tester needs to be added individually
@@ -144,16 +144,16 @@ Lobbies are for **pre-game matchmaking**:
 ### Basic Lobby Flow
 
 ```
-Create Lobby → Friends Join → Everyone Ready → Host Finds Server → Everyone Auto-Joins
+Create Lobby -> Friends Join -> Everyone Ready -> Host Finds Server -> Everyone Auto-Joins
 ```
 
 ### Testing in PIE (Play In Editor)
 
 **Quick multiplayer testing without building:**
 
-1. **Project Settings → Editor → Play**
+1. **Project Settings -> Editor -> Play**
 2. Set **Number of Players**: 1 (or more)
-3. In the editor toolbar: **Play (dropdown) → New Editor Window (PIE)**
+3. In the editor toolbar: **Play (dropdown) -> New Editor Window (PIE)**
 4. Multiple windows will open
 
 **Authentication in PIE:**
@@ -161,7 +161,7 @@ Create Lobby → Friends Join → Everyone Ready → Host Finds Server → Every
 - **Additional windows (PIE 1, 2, 3...)**: Use Dev Auth credentials from plugin settings
 
 **Add PIE Test Accounts:**
-1. **Project Settings → Game → Easy Matchmaking**
+1. **Project Settings -> Game -> Easy Matchmaking**
 2. Click **Advanced** to expand
 3. Find **Temporary PIE Accounts** array
 4. Click **+** to add entries for PIE instances 1, 2, 3, etc.
@@ -222,7 +222,7 @@ public class YourProjectServerTarget : TargetRules
         Type = TargetType.Server;
         DefaultBuildSettings = BuildSettingsVersion.V5;
         IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_6;
-        ExtraModuleNames.Add("YourProject"); // ← Replace with your project module name!
+        ExtraModuleNames.Add("YourProject"); // <- Replace with your project module name!
     }
 }
 ```
@@ -239,7 +239,7 @@ public class YourProjectClientTarget : TargetRules
         Type = TargetType.Client;
         DefaultBuildSettings = BuildSettingsVersion.V5;
         IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_6;
-        ExtraModuleNames.Add("YourProject"); // ← Replace with your project module name!
+        ExtraModuleNames.Add("YourProject"); // <- Replace with your project module name!
     }
 }
 ```
@@ -263,13 +263,13 @@ You should now see new build targets:
 1. In Visual Studio, select configuration dropdown
 2. Choose **Development Server**
 3. Select platform: **Win64**
-4. **Build → Build Solution**
+4. **Build -> Build Solution**
 5. Wait for compilation (5-10 minutes first time, 1-2 min after)
 
 **For Client:**
 1. Select configuration: **Development Client**
 2. Platform: **Win64**
-3. **Build → Build Solution**
+3. **Build -> Build Solution**
 
 **Output location:**
 - Server: `YourProject/Binaries/Win64/YourProjectServer.exe`
@@ -281,7 +281,7 @@ You should now see new build targets:
 
 **In Unreal Editor:**
 
-1. **Platforms → Windows → Cook Content**
+1. **Platforms -> Windows -> Cook Content**
 2. Select **Development** configuration
 3. Click **Cook**
 4. Wait for cooking (10-20 minutes first time, 2-5 min with iterative cooking)
@@ -383,7 +383,7 @@ Init Server (node)
 
 Tell Unreal which map to load when the server starts:
 
-1. **Project Settings → Maps & Modes**
+1. **Project Settings -> Maps & Modes**
 2. Find **Server Default Map**
 3. Set to your gameplay map (e.g., `Lvl_ThirdPerson`)
 
@@ -442,7 +442,7 @@ This forces the plugin to use `127.0.0.1:7777` instead of the public IP.
 **Problem:** Test accounts not added to EOS Sandbox  
 **Solution:** 
 1. Go to Epic Developer Portal
-2. Your Product → Sandbox → Members
+2. Your Product -> Sandbox -> Members
 3. Add Epic Account IDs of all testers
 4. Save changes
 
@@ -467,7 +467,7 @@ A utility from Epic that creates test accounts without requiring browser login.
 ### How to Set It Up
 
 1. Download from [Epic Developer Portal](https://dev.epicgames.com/portal)
-   - Go to your Product → Dev Auth Tool section
+   - Go to your Product -> Dev Auth Tool section
    - Download for your platform
 2. Run `EOS_DevAuthTool.exe`
 3. It starts listening on `localhost:6547` by default
@@ -480,7 +480,7 @@ A utility from Epic that creates test accounts without requiring browser login.
 
 **For PIE testing with 2+ players:**
 
-1. **Project Settings → Game → Easy Matchmaking**
+1. **Project Settings -> Game -> Easy Matchmaking**
 2. Expand **Advanced** section  
 3. Find **Temporary PIE Accounts** (array)
 4. Add one entry per additional PIE window:
@@ -516,18 +516,18 @@ YourClient.exe -DevAuthHost=localhost:6547 -DevAuthToken=Player2
 ```
 YourProject/
 ├── Source/
-│   ├── YourProject/                    ← Your game code
-│   ├── YourProjectServer.Target.cs     ← Create this for server builds
-│   └── YourProjectClient.Target.cs     ← Create this for client builds
+│   ├── YourProject/                    <- Your game code
+│   ├── YourProjectServer.Target.cs     <- Create this for server builds
+│   └── YourProjectClient.Target.cs     <- Create this for client builds
 ├── Plugins/
-│   └── EasyMatchmaking/                ← This plugin
-│       └── Content/Examples/           ← Example UI widgets
+│   └── EasyMatchmaking/                <- This plugin
+│       └── Content/Examples/           <- Example UI widgets
 ├── Binaries/Win64/
-│   ├── YourProjectServer.exe           ← Run dedicated server
-│   └── YourProject.exe / YourProjectClient.exe  ← Run game client
-├── Saved/Cooked/Windows/               ← Cooked content (after cooking)
+│   ├── YourProjectServer.exe           <- Run dedicated server
+│   └── YourProject.exe / YourProjectClient.exe  <- Run game client
+├── Saved/Cooked/Windows/               <- Cooked content (after cooking)
 └── Config/
-    └── DefaultGame.ini                 ← EOS credentials saved here
+    └── DefaultGame.ini                 <- EOS credentials will be saved here
 ```
 
 ### Key Blueprint Functions
@@ -577,7 +577,7 @@ YourProject/
 3. Create Server.Target.cs and Client.Target.cs files
 4. Generate VS project files
 5. Build in Visual Studio (Development Server + Development Client)
-6. Cook content in Unreal Editor (Platforms → Windows → Cook)
+6. Cook content in Unreal Editor (Platforms -> Windows -> Cook)
 7. Run YourProjectServer.exe
 8. Run YourProjectClient.exe (×2 or more)
 9. Create lobby in one client
@@ -620,4 +620,4 @@ YourProject/
 
 ---
 
-*"Multiplayer shouldn't be this hard. Let's make it easier together!"*
+*"Let's make multiplayer easier together!"*

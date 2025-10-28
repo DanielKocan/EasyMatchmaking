@@ -15,7 +15,6 @@
 7. [Common Issues & Solutions](#common-issues--solutions)
 8. [Dev Auth Tool (Advanced)](#dev-auth-tool-advanced)
 
----
 
 ## Installation
 
@@ -70,8 +69,6 @@ The plugin should be **automatically enabled**. To verify:
 
 After disabling plugins, restart Unreal Engine.
 
----
-
 ## Plugin Configuration
 
 ### Add Your EOS Credentials
@@ -93,8 +90,6 @@ After disabling plugins, restart Unreal Engine.
 - **Server Client Secret**: Server's client secret
 
 **Where to get these credentials?** See [EOS Account Setup](#eos-account-setup) below.
-
----
 
 ## EOS Account Setup
 
@@ -126,7 +121,6 @@ After disabling plugins, restart Unreal Engine.
 For detailed step-by-step instructions, check Epic's official guide (Dont do Step C "Download the EOS SDK", follow only first two (A and B) steps):  
 [Epic Online Services - Getting Started](https://dev.epicgames.com/docs/epic-online-services/eos-get-started/get-started-guide/set-up-account-and-download-eos-sdk)
 
----
 
 ## Testing Lobbies (No Server Needed)
 
@@ -190,8 +184,6 @@ Create Lobby -> Friends Join -> Everyone Ready -> Host Finds Server -> Everyone 
 2. Player 2: Searches lobbies, joins
 3. Both: Set ready status
 4. Ready to find a server!
-
----
 
 ## Building Dedicated Server & Client
 
@@ -293,8 +285,6 @@ YourProject/Saved/Cooked/Windows/
 
 The executables in `Binaries/Win64/` automatically find and use this cooked content.
 
----
-
 ## Running Your Server & Clients
 
 After building (Visual Studio) and cooking (Unreal Editor), you're ready to run!
@@ -350,8 +340,6 @@ YourProjectClient.exe -WINDOWED -DevAuthHost=localhost:6547 -DevAuthToken=Player
 YourProjectClient.exe -WINDOWED -DevAuthHost=localhost:6547 -DevAuthToken=Player3 -log
 ```
 
----
-
 ## Setting Up Your Game
 
 ### GameMode Configuration
@@ -388,8 +376,6 @@ Tell Unreal which map to load when the server starts:
 3. Set to your gameplay map (e.g., `Lvl_ThirdPerson`)
 
 This map automatically loads when you run `YourProjectServer.exe`.
-
----
 
 ## Common Issues & Solutions
 
@@ -445,8 +431,6 @@ This forces the plugin to use `127.0.0.1:7777` instead of the public IP.
 2. Your Product -> Sandbox -> Members
 3. Add Epic Account IDs of all testers
 4. Save changes
-
----
 
 ## Dev Auth Tool (Advanced)
 
@@ -506,8 +490,6 @@ YourClient.exe -DevAuthHost=localhost:6547 -DevAuthToken=Player2
 ```
 
 > Dev Auth Tool must be running on the machine where you launch clients!
-
----
 
 ## Quick Reference
 
@@ -588,8 +570,6 @@ YourProject/
 14. Everyone in game together!
 ```
 
----
-
 ## Tips & Best Practices
 
 **For Development:**
@@ -607,8 +587,6 @@ YourProject/
 - Iterative cooks take 2-5 minutes
 - Keep builds in Development during testing
 - Switch to Shipping for release
-
----
 
 ## Need Help?
 

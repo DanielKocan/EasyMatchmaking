@@ -451,14 +451,14 @@ A utility from Epic that creates test accounts without requiring browser login.
 ### How to Set It Up
 
 1. Download from [Epic Developer Portal](https://dev.epicgames.com/portal)
-   - Go to your Product -> Dev Auth Tool section
-   - Download for your platform
-2. Run `EOS_DevAuthTool.exe`
-3. It starts listening on `localhost:6547` by default
+   - Go to your Product -> Product Settings -> Epic Online Services SDK Download
+   - Download it.
+2. Run `EOS-SDK-version-Release-version\SDK\Tools\EOS_DevAuthTool-win32-x64-version\EOS_DevAuthTool.exe`
+3. Start listening on `localhost:6547`
 4. Create test users:
    - Click "Add User"
    - Username: `Player1`, `Player2`, `Player3`, etc.
-   - These are just local test accounts
+   - These are just local test accounts (but you need real Epic games account for them, just create more accounts via Epic Games)
 
 ### Using Dev Auth in PIE
 

@@ -8,6 +8,8 @@ EasyMatchmaking is a plugin for Unreal Engine that lets you create **lobbies wit
 
 Unlike the official Online Subsystem EOS Plugin, this is **pure C++ for UE with no extra plugins dependencies**, giving you **full control** of your network. You can generate your server `.exe` file, run it on your machine, or send it to a cloud service and it'll host the server for you.
 
+📚 **[Read the Documentation](Docs/DOCUMENTATION.md)** 📚
+
 ## Motivation
 
 Why did I make this?

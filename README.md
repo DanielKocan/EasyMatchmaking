@@ -1,6 +1,6 @@
 # EasyMatchmaking Plugin for Unreal Engine 🎮
 
-Easy-to-use multiplayer plugin powered by Epic Online Services (EOS). Handle lobbies, sessions, and dedicated servers - all with Blueprint or C++ support, no additional subsystems required!
+Easy-to-use multiplayer plugin built on Epic Online Services (EOS). Handle lobbies, sessions, and dedicated servers - all with Blueprint or C++ support, no additional subsystems required!
 
 ## What is This?
 
@@ -79,4 +79,4 @@ Contributions welcome! This is a learning project, so:
 
 Made with ❤️ for the Unreal Engine community
 
-*"Because dealing with OnlineSubsystem shouldn't require a PhD"*
+*"Because dealing with Unreal Engine Network shouldn't require a PhD"*

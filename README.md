@@ -12,9 +12,9 @@ Unlike the official Online Subsystem EOS Plugin, this is **pure C++ for UE with 
 
 ## Example
 
-<video src="Docs/Videos/ExampleWorkingForGithub.mp4" width="600" height="400" controls></video>
+"https://github.com/DanielKocan/EasyMatchmaking/blob/main/Docs/Videos/ExampleWorkingForGithub.mp4"
 
-*The video shows that the dedicated server is running, and then the user can authenticate via Epic Games (the second client is running DevAuthTool). Later, it shows what the lobby is capable of: how you can chat, set ready status, and how the host connects and automatically transitions other lobby members.
+* The video shows that the dedicated server is running, and then the user can authenticate via Epic Games (the second client is running DevAuthTool). Later, it shows what the lobby is capable of: how you can chat, set ready status, and how the host connects and automatically transitions other lobby members.
 
 ## Motivation
 

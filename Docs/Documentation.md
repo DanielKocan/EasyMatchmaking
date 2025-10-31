@@ -514,6 +514,10 @@ YourProject/
 
 ### Key Blueprint Functions
 
+Use provided classes below to get access to functions via blueprints
+
+![](Images/Example.png)
+
 **Lobby System:**
 - `Create Lobby` - Start a new lobby (max players, bucket ID)
 - `Search Lobbies` - Find available lobbies (by bucket ID)
@@ -522,13 +526,21 @@ YourProject/
 - `Set Player Ready` - Toggle your ready status
 - `Get Lobby Members` - Get list of all players in lobby
 - `Is Lobby Owner` - Check if you're the host
+- and much more!
+
+![](Images/LobbyFunctions.png)
+
+![](Images/LobbyFunctions2.png)
 
 **Session System:**
 - `Init Server` - Initialize session on dedicated server (call in GameMode BeginPlay)
 - `Search Sessions` - Find available dedicated servers
 - `Join Session By ID` - Join a session (auto-called for lobby members)
+- and much more!
 
-**Events (Delegates):**
+![](Images/SessionFunctions.png)
+
+**Events (Delegates from Lobby system or Session system):**
 - `On User Authenticated` - Fires when EOS login succeeds
 - `On Lobby Created` - Fires when your lobby is ready
 - `On Lobby Joined` - Fires when you join a lobby
@@ -536,6 +548,7 @@ YourProject/
 - `On Sessions Found` - Fires with array of found sessions
 - `On Session Address Updated` - Fires when host finds server (triggers auto-join for members)
 - `On All Players Ready` - Fires when everyone in lobby is ready
+- and much more!
 
 ## Complete Workflow Example
 

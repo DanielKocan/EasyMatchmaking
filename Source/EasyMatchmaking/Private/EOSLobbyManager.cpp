@@ -176,7 +176,6 @@ void UEOSLobbyManager::CreateLobby(const FLobbySettings& Settings)
     FTCHARToUTF8 BucketIdConverter(*Settings.BucketId);
     CreateOptions.BucketId = BucketIdConverter.Get();
 
-    // Print platform configuration debug infos
     EM_LOG_INFO(TEXT("=== EOS PLATFORM DEBUG INFO ==="));
 
     // Get the current platform config
@@ -1067,6 +1066,11 @@ void UEOSLobbyManager::OnFindLobbiesComplete(const EOS_LobbySearch_FindCallbackI
                 EOS_LobbyDetails_Release(LobbyDetails);
             }
         }
+
+        if (LobbyCount == 0)
+        {
+            EM_LOG_WARNING(TEXT("No lobbies found matching the search criteria"));
+		}
 
         LobbyManager->OnLobbiesFound.Broadcast(LobbyManager->FoundLobbies);
     }

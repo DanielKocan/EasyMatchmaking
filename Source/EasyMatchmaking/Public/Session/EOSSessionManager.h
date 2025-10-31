@@ -10,7 +10,6 @@
 //Forwad declaration
 class UEOSManager;
 
-// Add delegate before class
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSessionsFound, const TArray<FString>&, SessionIds);
 
 UCLASS()

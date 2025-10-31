@@ -28,7 +28,6 @@ void UEOSManager::Initialize(FSubsystemCollectionBase& Collection)
             EM_LOG_INFO(TEXT("Active Config - ClientSecret: %s"), *Config->ClientSecret);
         }
 
-        // Use the static function instead of static variable
         IEOSPlatformHandlePtr CachedPlatform = FEasyMatchmakingModule::GetCachedEOSPlatform();
 
         if (CachedPlatform.IsValid())
@@ -307,7 +306,6 @@ void UEOSManager::OnConnectLoginFromEpicComplete(const EOS_Connect_LoginCallback
         CreateOptions.ApiVersion = EOS_CONNECT_CREATEUSER_API_LATEST;
         CreateOptions.ContinuanceToken = Data->ContinuanceToken;
 
-        // Fixed: Added the missing callback parameter
         EOS_Connect_CreateUser(ConnectHandle, &CreateOptions, Manager, OnCreateUserComplete);
     }
     else

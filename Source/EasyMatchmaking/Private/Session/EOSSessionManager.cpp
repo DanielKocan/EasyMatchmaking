@@ -36,6 +36,12 @@ void UEOSSessionManager::BeginDestroy()
         CurrentSessionSearchHandle = nullptr;
     }
 
+    if(IsRunningDedicatedServer())
+    {
+        EM_LOG_INFO(TEXT("Dedicated server shutting down Session"));
+        DestroySession();
+	}
+
     // Auto-cleanup when subsystem is destroyed
     if (!CurrentSessionId.IsEmpty())
     {
@@ -77,7 +83,7 @@ void UEOSSessionManager::JoinSessionById(const FString& SessionId)
         return;
     }
 
-    EM_LOG_INFO(TEXT("Searching for session: %s"), *SessionId);
+    EM_LOG_INFO(TEXT("Executing join Session By ID"));
 
     // Check if we already have this session cached from SearchSessions(), if you dont do it then callback possibli will not be executed :(
     EOS_HSessionDetails* CachedDetails = CachedSessionDetails.Find(SessionId);
@@ -105,6 +111,7 @@ void UEOSSessionManager::JoinSessionById(const FString& SessionId)
     // Clean up previous search
     if (CurrentSessionSearchHandle)
     {
+        EM_LOG_INFO(TEXT("Cleaning Up CurrentSessionSearchHandle"));
         EOS_SessionSearch_Release(CurrentSessionSearchHandle);
         CurrentSessionSearchHandle = nullptr;
     }
@@ -265,6 +272,10 @@ void UEOSSessionManager::OnSessionSearchComplete(const EOS_SessionSearch_FindCal
     {
         return;
     }
+    else
+    {
+        EM_LOG_ERROR(TEXT("Invalid SessionManager In SessionSearch"));
+    }
 
     // Clear old cached session details
     for (auto& Pair : SessionManager->CachedSessionDetails)
@@ -313,7 +324,7 @@ void UEOSSessionManager::OnSessionSearchComplete(const EOS_SessionSearch_FindCal
                         EM_LOG_INFO(TEXT("Host Address: %s"), *HostAddress);
                     }
 
-                    EM_LOG_INFO(TEXT("Found session: %s"), *SessionId);
+                    EM_LOG_INFO(TEXT("Session ID: %s"), *SessionId);
 
                     EOS_SessionDetails_Info_Release(SessionInfo);
                 }
@@ -327,6 +338,7 @@ void UEOSSessionManager::OnSessionSearchComplete(const EOS_SessionSearch_FindCal
     // Clean up
     if (SessionManager->CurrentSessionSearchHandle)
     {
+        EM_LOG_INFO(TEXT("Cleaned up Session Search Handle In OnSessionSearchComplete"));
         EOS_SessionSearch_Release(SessionManager->CurrentSessionSearchHandle);
         SessionManager->CurrentSessionSearchHandle = nullptr;
     }
@@ -416,8 +428,6 @@ void UEOSSessionManager::OnJoinSessionComplete(const EOS_Sessions_JoinSessionCal
 
     EM_LOG_INFO(TEXT("=== OnJoinSessionComplete executed ==="));
 
-    SessionManager->EOSManager->GetLobbyManager()->UnregisterLobbyNotifications();
-
     if (Data->ResultCode == EOS_EResult::EOS_Success)
     {
         FString SessionId = SessionManager->PendingJoinSessionId;
@@ -448,6 +458,14 @@ void UEOSSessionManager::OnJoinSessionComplete(const EOS_Sessions_JoinSessionCal
                     }
                 }
             }
+            else
+            {
+                EM_LOG_ERROR(TEXT("Cant get lobby manager in order set adress!"));
+            }
+        }
+        else
+        {
+            EM_LOG_ERROR(TEXT("Cant get EOSmanager in order set adress!"));
         }
 
         EOS_HSessionDetails* SessionDetailsPtr = SessionManager->CachedSessionDetails.Find(SessionId);

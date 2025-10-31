@@ -134,7 +134,7 @@ void FEasyMatchmakingModule::PluginButtonClicked()
 
 	// Create a new window
 	TSharedRef<SWindow> NewWindow = SNew(SWindow)
-		.Title(FText::FromString(TEXT("My New Window")))
+		.Title(FText::FromString(TEXT("EasyMatchmaking")))
 		.ClientSize(FVector2D(800, 400)) // size of the window
 		.SupportsMaximize(true)
 		.SupportsMinimize(true);
@@ -145,19 +145,6 @@ void FEasyMatchmakingModule::PluginButtonClicked()
 		.Padding(10)
 		[
 			SNew(SVerticalBox)
-				+ SVerticalBox::Slot()
-				.AutoHeight()
-				[
-					SNew(STextBlock)
-						.Text(FText::FromString(TEXT("Hello from my custom window!")))
-				]
-				+ SVerticalBox::Slot()
-				.AutoHeight()
-				.HAlign(HAlign_Center)
-				[
-					SNew(SImage)
-						.Image(ImageBrush.Get())
-				]
 				+ SVerticalBox::Slot()
 				.AutoHeight()
 				.HAlign(HAlign_Center)
@@ -178,6 +165,40 @@ void FEasyMatchmakingModule::PluginButtonClicked()
 								return FReply::Handled();
 							})
 				]
+				+ SVerticalBox::Slot()
+					.AutoHeight()
+					.HAlign(HAlign_Center)
+					.Padding(0, 20, 0, 0)
+					[
+						SNew(SVerticalBox)
+							+ SVerticalBox::Slot()
+							.AutoHeight()
+							.HAlign(HAlign_Center)
+							[
+								SNew(STextBlock)
+									.Text(FText::FromString(TEXT("Thank you for using my plugin, check documentation here!:")))
+							]
+							+ SVerticalBox::Slot()
+							.AutoHeight()
+							.HAlign(HAlign_Center)
+							.Padding(0, 5, 0, 0)
+							[
+								SNew(SButton)
+									.Text(FText::FromString(TEXT("https://github.com/DanielKocan/EasyMatchmaking")))
+									.OnClicked_Lambda([]() -> FReply
+										{
+											FPlatformProcess::LaunchURL(TEXT("https://github.com/DanielKocan/EasyMatchmaking"), nullptr, nullptr);
+											return FReply::Handled();
+										})
+							]
+					]
+				+ SVerticalBox::Slot()
+					.AutoHeight()
+					.HAlign(HAlign_Center)
+					[
+						SNew(SImage)
+							.Image(ImageBrush.Get())
+					]
 		]
 	);
 

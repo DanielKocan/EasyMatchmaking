@@ -82,12 +82,12 @@ After disabling plugins, restart Unreal Engine.
 - **Deployment ID**: From Epic Developer Portal
 
 **EOS User Credentials:**
-- **Client ID**: From your EOS application
-- **Client Secret**: From your EOS application (keep this private!)
+- **Client ID**: From your Epic Developer Portal
+- **Client Secret**: From your Epic Developer Portal (keep this private!)
 
 **Server Credentials (for Dedicated Servers):**
-- **Server Client ID**: Create a separate client credential for servers
-- **Server Client Secret**: Server's client secret
+- **Server Client ID**: Create a separate client credential for servers (in Epic Developer Portal)
+- **Server Client Secret**: Also seperate Server's client secret (in Epic Developer Portal)
 
 **Where to get these credentials?** See [EOS Account Setup](#eos-account-setup) below.
 
@@ -105,7 +105,7 @@ After disabling plugins, restart Unreal Engine.
 
 ### Important: Add Test Users to Sandbox
 
-**By default, EOS Sandboxes are private!** You must add testers manually:
+**By default, EOS Sandboxes are private!** You must add testers (other users/their account) manually:
 
 1. In Epic Developer Portal -> Your Product -> Sandbox Settings
 2. Go to **Members** or **Permissions** tab
@@ -120,7 +120,6 @@ After disabling plugins, restart Unreal Engine.
 
 For detailed step-by-step instructions, check Epic's official guide (Dont do Step C "Download the EOS SDK", follow only first two (A and B) steps):  
 [Epic Online Services - Getting Started](https://dev.epicgames.com/docs/epic-online-services/eos-get-started/get-started-guide/set-up-account-and-download-eos-sdk)
-
 
 ## Testing Lobbies (No Server Needed)
 
@@ -166,11 +165,11 @@ Create Lobby -> Friends Join -> Everyone Ready -> Host Finds Server -> Everyone 
 **PIE Limitations:**
 - Works great for lobby testing
 - Has issues with World Partition when joining dedicated servers
-- Use packaged builds for full server testing
+- Use packaged builds for full and proper server testing
 
 ### Using Example Blueprints
 
-1. Check `Plugins/EasyMatchmaking/Content/Examples/` for example widgets and Blueprints
+1. Check `Plugins/EasyMatchmaking/Content/` for example widgets and Blueprints
 2. Use these as templates for your own UI
 3. Key Blueprint functions:
    - `Create Lobby` - Create a new lobby
@@ -180,7 +179,7 @@ Create Lobby -> Friends Join -> Everyone Ready -> Host Finds Server -> Everyone 
    - `Leave Lobby` - Exit current lobby
 
 **Workflow:**
-1. Player 1: Creates lobby
+1. Player 1: Creates lobby and automaticly joins it (as a host)
 2. Player 2: Searches lobbies, joins
 3. Both: Set ready status
 4. Ready to find a server!
@@ -256,7 +255,7 @@ You should now see new build targets:
 2. Choose **Development Server**
 3. Select platform: **Win64**
 4. **Build -> Build Solution**
-5. Wait for compilation (5-10 minutes first time, 1-2 min after)
+5. Wait for compilation (10-20 minutes first time, 1-2 min after)
 
 **For Client:**
 1. Select configuration: **Development Client**
@@ -283,7 +282,7 @@ You should now see new build targets:
 YourProject/Saved/Cooked/Windows/
 ```
 
-The executables in `Binaries/Win64/` automatically find and use this cooked content.
+The executables in `YourProject/Binaries/Win64/` automatically find and use this cooked content.
 
 ## Running Your Server & Clients
 
@@ -315,7 +314,7 @@ YourProjectClient.exe -WINDOWED -ResX=800 -ResY=450 -log
 
 This opens Epic Account login in your web browser. Sign in with your Epic account.
 
-### Start Client 2 (Dev Auth - No Browser)
+### Start Client 2 (Dev Auth - No Browser, DevAuthTool REQUIRED!)
 
 ```bash
 YourProjectClient.exe -WINDOWED -ResX=800 -ResY=450 -DevAuthHost=localhost:6547 -DevAuthToken=Player1 -log
@@ -354,11 +353,14 @@ Your GameMode needs to initialize the session manager on the dedicated server.
 
 ```
 Event BeginPlay
-    ↓
+    |
+    \/
 Get Subsystem (Class: EOS Manager)
-    ↓
+    |
+    \/
 Get Session Manager
-    ↓
+    |
+    \/
 Init Server (node)
 ```
 
@@ -432,6 +434,8 @@ This forces the plugin to use `127.0.0.1:7777` instead of the public IP.
 3. Add Epic Account IDs of all testers
 4. Save changes
 
+[Optionally you can try also this solution](https://eoshelp.epicgames.com/s/article/How-do-I-invite-new-members-to-my-Organization-in-the-Developer-Portal?language=en_US)
+
 ## Dev Auth Tool (Advanced)
 
 ### What is Dev Auth Tool?
@@ -444,7 +448,7 @@ A utility from Epic that creates test accounts without requiring browser login.
 - Running multiple packaged clients locally
 - Automated testing
 
-**When you DON'T need it:**
+**When you maybe don't need it if you are using:**
 - Single client testing (use browser login)
 - Production/released games (users have real Epic accounts)
 
@@ -479,7 +483,7 @@ A utility from Epic that creates test accounts without requiring browser login.
 
 ### Using Dev Auth in Packaged Builds
 
-Run your client with command line arguments:
+Run your client game project with command line arguments:
 
 ```bash
 # Client with Dev Auth
@@ -503,11 +507,10 @@ YourProject/
 │   └── YourProjectClient.Target.cs     <- Create this for client builds
 ├── Plugins/
 │   └── EasyMatchmaking/                <- This plugin
-│       └── Content/Examples/           <- Example UI widgets
+│       └── Content/                    <- Example UI widgets
 ├── Binaries/Win64/
 │   ├── YourProjectServer.exe           <- Run dedicated server
 │   └── YourProject.exe / YourProjectClient.exe  <- Run game client
-├── Saved/Cooked/Windows/               <- Cooked content (after cooking)
 └── Config/
     └── DefaultGame.ini                 <- EOS credentials will be saved here
 ```

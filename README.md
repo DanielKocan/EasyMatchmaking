@@ -10,6 +10,12 @@ Unlike the official Online Subsystem EOS Plugin, this is **pure C++ for UE with 
 
 📚 **[Read the Documentation](Docs/Documentation.md)** 📚
 
+## Example
+
+<video src="Docs/Videos/ExampleWorkingForGithub.mp4" width="600" height="400" controls></video>
+
+*The video shows that the dedicated server is running, and then the user can authenticate via Epic Games (the second client is running DevAuthTool). Later, it shows what the lobby is capable of: how you can chat, set ready status, and how the host connects and automatically transitions other lobby members.
+
 ## Motivation
 
 Why did I make this?
@@ -82,3 +88,7 @@ Contributions welcome! This is a learning project, so:
 Made with ❤️ for the Unreal Engine community
 
 *"Because dealing with Unreal Engine Network shouldn't require a PhD"*
+
+---
+
+![BUAS](Docs/Images/LogoBUas_RGB.png)
